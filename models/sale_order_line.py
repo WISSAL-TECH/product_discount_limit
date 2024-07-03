@@ -48,6 +48,6 @@ class SalesOrderLine(models.Model):
                     _('Vous n\'êtes pas autorisé à appliquer une remise de moins de %s '
                         'pourcentage sur ce %s. Veuillez contacter votre '
                         'administrateur',
-                      desc_limit,
+                      min_limit,
                       'product' if self.product_id.product_tmpl_id else
                       'category'))
