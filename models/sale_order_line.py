@@ -33,11 +33,21 @@ class SalesOrderLine(models.Model):
         if not self.env.user.allow_discount:
             desc_limit = self.product_id.product_tmpl_id.desc_limit or \
                          self.product_id.categ_id.desc_limit
+            min_limit = self.product_id.product_tmpl_id.min_limit or \
+                         self.product_id.categ_id.min_limit
             if desc_limit and self.discount > desc_limit:
                 raise exceptions.UserError(
-                    _('You are not allowed to apply discount more than %s '
-                      'percentage on this %s. Please contact your '
-                      'administrator',
+                    _('Vous n\'êtes pas autorisé à appliquer une remise de plus de %s '
+                        'pourcentage sur ce %s. Veuillez contacter votre '
+                        'administrateur',
+                      desc_limit,
+                      'product' if self.product_id.product_tmpl_id else
+                      'category'))
+            if min_limit and min_limit > self.discount and self.discount != 0:
+                raise exceptions.UserError(
+                    _('Vous n\'êtes pas autorisé à appliquer une remise de moins de %s '
+                        'pourcentage sur ce %s. Veuillez contacter votre '
+                        'administrateur',
                       desc_limit,
                       'product' if self.product_id.product_tmpl_id else
                       'category'))

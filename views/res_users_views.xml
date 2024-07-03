@@ -10,7 +10,7 @@
             <page name="access_rights" position="inside">
                 <group>
                     <group name="others" string="Others">
-                        <field name="allow_discount" string="Allow Discount Over Limit"/>
+                        <field name="allow_discount" string="Autoriser la remise au-delà de la limite"/>
                     </group>
                 </group>
             </page>

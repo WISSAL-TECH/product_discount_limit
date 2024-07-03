@@ -9,8 +9,9 @@
         <field name="arch" type="xml">
             <group name="first" position="after">
                 <group>
-                    <group name="discount" string="Discount">
+                    <group name="discount" string="Remise">
                         <field name="desc_limit"/>
+                        <field name="min_limit"/>
                     </group>
                 </group>
             </group>

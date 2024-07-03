@@ -26,6 +26,13 @@ class ProductTemplate(models.Model):
     """Inherited product.template to add field Discount Limit"""
     _inherit = 'product.template'
 
-    desc_limit = fields.Float(string="Discount Limit(%)",
-                              help="If it is specified,user can't give a "
-                                   "discount greater the amount")
+    desc_limit = fields.Float(
+        string="Limite de remise (%)",
+        help="Si spécifié, l'utilisateur ne peut pas accorder une "
+             "remise supérieure au montant"
+    )
+    min_limit = fields.Float(
+        string="Limite minimale de remise (%)",
+        help="Si spécifié, l'utilisateur ne peut pas accorder une "
+             "remise inférieure à ce montant"
+    )

@@ -9,6 +9,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='barcode']" position="after">
                 <field name="desc_limit"/>
+                <field name="min_limit"/>
             </xpath>
         </field>
     </record>
