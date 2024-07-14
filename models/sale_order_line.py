@@ -38,7 +38,7 @@ class SalesOrderLine(models.Model):
             if desc_limit and self.discount > desc_limit:
                 raise exceptions.UserError(
                     _('Vous n\'êtes pas autorisé à appliquer une remise de plus de %s '
-                        'pourcentage sur ce %s. Veuillez contacter votre '
+                        '% sur ce %s. Veuillez contacter votre '
                         'administrateur',
                       desc_limit,
                       'product' if self.product_id.product_tmpl_id else
@@ -46,7 +46,7 @@ class SalesOrderLine(models.Model):
             if min_limit and min_limit > self.discount and self.discount != 0:
                 raise exceptions.UserError(
                     _('Vous n\'êtes pas autorisé à appliquer une remise de moins de %s '
-                        'pourcentage sur ce %s. Veuillez contacter votre '
+                        '% sur ce %s. Veuillez contacter votre '
                         'administrateur',
                       min_limit,
                       'product' if self.product_id.product_tmpl_id else
